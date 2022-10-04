@@ -2,11 +2,8 @@
 
 body {
   font-size: 28rpx;
-  // color: #333;
-  color: #000;
+  color: #FFFFFF;
   font-family: "微软雅黑";
-  // background-color: #efefef;
-  // height: 100vh;
   width: 100%;
   position: fixed;
   height: 100%;
@@ -14,9 +11,8 @@ body {
 
 .container {
   width: 100%;
-  // height: 100vh;
-  height: 100%;
-  background-color: #F7F7F7;
+  height: 100vh;
+  background-color: #0E1E2D;
   position: relative;
   overflow-y: auto;
 }

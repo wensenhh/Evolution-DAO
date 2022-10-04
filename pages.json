@@ -9,14 +9,14 @@
 			"path": "pages/index/index",
 			"style": {
 				"enablePullDownRefresh": false,
-				"navigationBarTitleText": "首页",
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{
 			"path": "pages/home/index",
 			"style": {
 				"enablePullDownRefresh": false,
-				"navigationBarTitleText": "个人中心",
+				"navigationBarTitleText": "个人中心"
 			}
 		}
 	],
@@ -48,23 +48,43 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "App",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
-		"color": "#282828",
-		"selectedColor": "#57ABFF",
-		"borderStyle": "white",
-		"backgroundColor": "#ffffff",
-		"list": [{
+		"color": "#496083",
+		"selectedColor": "#468AF1",
+		"borderStyle": "block",
+		"backgroundColor": "#1A2B45",
+		"list": [
+			{
 				"pagePath": "pages/index/index",
 				// "iconPath": "static/1-01.png",
-				"text": "首页",
+				"text": "Election"
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				// "pagePath": "pages/index/index",
+				// "iconPath": "static/1-01.png",
+				"text": "Ecology"
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				// "pagePath": "pages/index/index",
+				// "iconPath": "static/1-01.png",
+				"text": "Airdrop"
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				// "pagePath": "pages/index/index",
+				// "iconPath": "static/1-01.png",
+				"text": "Community"
 				// "selectedIconPath": "static/1-02.png"
 			},
 			{
 				"pagePath": "pages/home/index",
 				// "iconPath": "static/2-01.png",
-				"text": "我的",
+				"text": "Mine"
 				// "selectedIconPath": "static/2-02.png"
 			}
 		]
