@@ -1,0 +1,72 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// "navigationStyle":"custom", // 去除app H5 小程序的默认顶部
+		// "titleNView": false // 去除app H5的默认顶部
+		{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "首页",
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "个人中心",
+			}
+		}
+	],
+	/*
+		分包的方式 需要分包的文件在pages内的subcontract文件夹下创建
+	*/
+	/* 分包预加载 */
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": ["pages/subcontract/"]
+		}
+	},
+	// /* 分包 */
+	"subPackages": [{
+		"root": "pages/subcontract/",
+		"pages": [
+			{
+				"path": "login/index",
+				"style": {
+					"navigationBarTitleText": "登录",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}
+		]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "App",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#282828",
+		"selectedColor": "#57ABFF",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				// "iconPath": "static/1-01.png",
+				"text": "首页",
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				"pagePath": "pages/home/index",
+				// "iconPath": "static/2-01.png",
+				"text": "我的",
+				// "selectedIconPath": "static/2-02.png"
+			}
+		]
+	}
+}
