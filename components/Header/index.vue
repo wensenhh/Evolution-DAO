@@ -7,7 +7,7 @@
 		<view class="flex-a">
 			<u--image :showMenuByLongpress='false' src='https://cdn.uviewui.com/uview/album/1.jpg' width="44rpx" height="44rpx" />
 			<view class="ml12 mr12">0x...5004</view>
-			<view class="language flex">中</view>
+			<view class="language flex">{{ $t('local') }}</view>
 		</view>
 	</view>
 </template>

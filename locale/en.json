@@ -1,18 +1,50 @@
 {
+	"local": "En",
     "locale.en": "English",
-    "locale.zh": "简体中文",
+    "locale.zh-Hans": "中文",
+	
+	"Election.title": "ED Governance",
+	"Election.text": "DAO is the first step of decentralization. Come and make suggestions for the future of FD",
+	"Election.etc": "Alternate Director",
+	"Election.bocomeEtc": "Become candidate director",
+	"Election.number": "Total number of pledge vouchers:",
+	"Election.etcList": "List of directors",
+	"Election.etc.money": "Pledge amount",
+	"Election.etc.name": "Name of director candidate",
+	"Election.etc.nameP": "Please enter the name the director candidate",
+	"Election.etc.remark": "Election description( Recommended English )",
+	"Election.etc.remarkP": "Please enter the election description",
+	"Election.etc.remarkContent": "Use open and transparent elections to make decisions",
+	"Election.etc.remarkText": "You need to pledge at least 4 billion ED certificates to become a candidate director of ED \n*If you are not selected as a director, you can get your voucher back after the election of the director, but there is a three-day unlocking period \n*If you are elected as a director, then you will not be able to redeem the pledged certificate until the end of the official director period",
+	
+	"Ecology.ed": "The Evolution DAO platform is a self-evolving organizational protocol in a decentralized form built on a built-in decision-making system of trust (TRUST CONTRACT) and meta-cosmic crowdfunding Congress. Trust contracts here are securely executable contracts based on the protocol layer, providing a secure and efficient smart contract engine and accompanying multilingual development tools.",
+	"Ecology.more": "Do you want to know more?",
+	"Ecology.understand": "Click for details",
+	
+	"Airdrop.total": "Total airdrop",
+	"Airdrop.vip": "VIP",
+	"Airdrop.account": "Cumulative",
+	"Airdrop.pool": "Pool pledge",
+	"Airdrop.lp": "LP pledge",
+	"Airdrop.lps": "LPS pledge",
+	"Airdrop.address": "Wallet address",
+	"Airdrop.invitationAddress": "Superior invitation address",
+	"Airdrop.invitationAddressP": "Please enter the superior invitation address",
+	"Airdrop.collect": "Collect",
+	"Airdrop.remark": "Pay 0.03 BNB to receive 30 million ED, and the recommender can receive 30 million ED at the same time",
+	"Airdrop.InviteFriends": "Invite friends",
+	"Airdrop.GoodFriend": "Good friend",
+	"Airdrop.copy": "copy",
+	"Airdrop.pushNum": "Direct push number",
+	"Airdrop.teamNum": "Number of team members",
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	"tabber.Election": "Election",
-	"tabber.Ecology": "Ecology",
-	"tabber.Airdrop": "Airdrop",
-	"tabber.Community": "Community",
-	"tabber.Mine": "Mine"
+	"tabbar.Election": "Election",
+	"tabbar.Ecology": "Ecology",
+	"tabbar.Airdrop": "Airdrop",
+	"tabbar.Community": "Community",
+	"tabbar.Mine": "Mine"
 }

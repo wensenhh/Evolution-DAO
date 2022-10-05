@@ -18,6 +18,29 @@
 	justify-content: space-between;
 }
 
+.flex-around {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.flex-evenly {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.flex-c-end {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
+}
+
 .flex-a {
   display: flex;
   align-items: center;
@@ -34,6 +57,16 @@
 
 .flex-c {
 	flex-direction: column;
+}
+
+.flex-w-between { // 换行flex 两端对齐布局
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.flex-w {
+	flex-wrap: wrap;
 }
 
 .text-c {
@@ -390,6 +423,18 @@
 	color: #009B4D;
 }
 
+.c-ff4848 {
+	color: #ff4848;
+}
+
+.c-b4 {
+	color: #b4b4b4;
+}
+
+.c-ecaa46 {
+	color: #ECAA46;
+}
+
 .c-red {
   color: red;
 }
@@ -426,6 +471,14 @@
   width: 260rpx;
 }
 
+.h-12 {
+	height: 24rpx;
+}
+
+.h-8 {
+	height: 16rpx;
+}
+
 .h-20 {
 	height: 40rpx;
 }
@@ -442,7 +495,15 @@
 	height: 100rpx;
 }
 
+.fons-8 {
+	font-size: 16rpx;
+}
+
 .fons-10 {
+	font-size: 20rpx;
+}
+
+.fons-11 {
 	font-size: 22rpx;
 }
 
@@ -538,6 +599,31 @@ camera,
 image,
 video {
 	box-sizing: border-box;
+}
+
+// 当行文本超出隐藏
+.text-hidden {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// 两行文本超出隐藏
+.text-hidden2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+// 三行文本超出隐藏
+.text-hidden3 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 
 

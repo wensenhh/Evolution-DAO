@@ -13,10 +13,31 @@
 			}
 		},
 		{
+			"path": "pages/Ecology/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Ecology"
+			}
+		},
+		{
+			"path": "pages/airdrop/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Airdrop"
+			}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/become/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "成为候选理事"
 			}
 		}
 	],
@@ -60,31 +81,31 @@
 			{
 				"pagePath": "pages/index/index",
 				// "iconPath": "static/1-01.png",
-				"text": "%tabber.Election%"
+				"text": "%tabbar.Election%"
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				"pagePath": "pages/Ecology/index",
+				// "iconPath": "static/1-01.png",
+				"text": "%tabbar.Ecology%"
+				// "selectedIconPath": "static/1-02.png"
+			},
+			{
+				"pagePath": "pages/airdrop/index",
+				// "iconPath": "static/1-01.png",
+				"text": "%tabbar.Airdrop%"
 				// "selectedIconPath": "static/1-02.png"
 			},
 			{
 				// "pagePath": "pages/index/index",
 				// "iconPath": "static/1-01.png",
-				"text": "Ecology"
-				// "selectedIconPath": "static/1-02.png"
-			},
-			{
-				// "pagePath": "pages/index/index",
-				// "iconPath": "static/1-01.png",
-				"text": "Airdrop"
-				// "selectedIconPath": "static/1-02.png"
-			},
-			{
-				// "pagePath": "pages/index/index",
-				// "iconPath": "static/1-01.png",
-				"text": "Community"
+				"text": "%tabbar.Community%"
 				// "selectedIconPath": "static/1-02.png"
 			},
 			{
 				"pagePath": "pages/home/index",
 				// "iconPath": "static/2-01.png",
-				"text": "Mine"
+				"text": "%tabbar.Mine%"
 				// "selectedIconPath": "static/2-02.png"
 			}
 		]
