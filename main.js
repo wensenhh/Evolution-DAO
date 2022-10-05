@@ -5,10 +5,15 @@ import uView from "uview-ui"
 Vue.use(uView);
 uni.$u.config.unit = 'rpx'
 
-import share from '@/common/mixin';
+import share from '@/common/mixin'
 Vue.mixin(share)
 
 import * as filters from '@/utils/filter'
+
+import Header from '@/components/Header/index'
+Vue.component('myHeader', Header)
+
+import i18n from './locale/index'
 
 Vue.config.productionTip = false
 
@@ -80,6 +85,7 @@ Object.keys(filters).forEach(key => {
 
 const app = new Vue({
     ...App,
-	store
+	store,
+	i18n
 })
 app.$mount()

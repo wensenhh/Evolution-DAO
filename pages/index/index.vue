@@ -1,6 +1,12 @@
 <template>
 	<view class="container">
-		首页
+		<view class="main">
+			<view class="header">
+				<myHeader />
+			</view>
+			
+			<u-button type="primary" text="确定" @click="$jump('/pages/subcontract/login/index')"></u-button>
+		</view>
 	</view>
 </template>
 
@@ -20,4 +26,5 @@
 </script>
 
 <style lang="scss" scoped>
+	
 </style>

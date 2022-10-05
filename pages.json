@@ -60,7 +60,7 @@
 			{
 				"pagePath": "pages/index/index",
 				// "iconPath": "static/1-01.png",
-				"text": "Election"
+				"text": "%tabber.Election%"
 				// "selectedIconPath": "static/1-02.png"
 			},
 			{

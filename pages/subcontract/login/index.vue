@@ -1,5 +1,6 @@
 <template>
-	<view>
+	<view class="container">
+		<myHeader :flag='2' />
 		登录页
 	</view>
 </template>
