@@ -23,7 +23,7 @@
 			<view class="etc-list">
 				{{ $t('Election.etcList') }}
 				
-				<u-empty v-if="!etcList.length" mode="data" icon="http://cdn.uviewui.com/uview/empty/data.png" text='暂无数据' />
+				<u-empty v-if="!etcList.length" mode="data" icon="http://cdn.uviewui.com/uview/empty/data.png" :text="$t('system.notData')" />
 			</view>
 		</view>
 	</view>

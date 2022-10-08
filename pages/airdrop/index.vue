@@ -3,7 +3,7 @@
 		<view class="main">
 			<myHeader />
 			
-			<view class="card posi-r">
+			<view class="card posi-r" @click="$jump('/pages/totalAirdrop/index')">
 				<view class="fons-24">{{ $t('Airdrop.total') }}</view>
 				<view class="money mb10 fons-24">{{ '750,000,000,000,000' }}</view>
 				<view>
@@ -13,7 +13,7 @@
 					</view>
 				</view>
 				
-				<view class="posi-a lps">
+				<view class="posi-a lps" @click="$jump('/pages/offering/index')">
 					{{ $t('Airdrop.lps') }}
 				</view>
 			</view>

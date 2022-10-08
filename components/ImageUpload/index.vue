@@ -42,7 +42,7 @@
 		},
 		data() {
 			return {
-				uploadUrl: HTTP_REQUEST_URL + 'mini/file/upload', // 上传文件接口
+				uploadUrl: HTTP_REQUEST_URL + 'file/upload', // 上传文件接口
 				// fileList: [],
 				deleteStatus: true,
 			}

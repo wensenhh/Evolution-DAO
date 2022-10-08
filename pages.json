@@ -27,6 +27,13 @@
 			}
 		},
 		{
+			"path": "pages/community/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Community"
+			}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {
 				"enablePullDownRefresh": false,
@@ -38,6 +45,27 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "成为候选理事"
+			}
+		},
+		{
+			"path": "pages/offering/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "抢购"
+			}
+		},
+		{
+			"path": "pages/totalAirdrop/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "空投统计"
+			}
+		},
+		{
+			"path": "pages/proposal/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "发布提案"
 			}
 		}
 	],
@@ -97,7 +125,7 @@
 				// "selectedIconPath": "static/1-02.png"
 			},
 			{
-				// "pagePath": "pages/index/index",
+				"pagePath": "pages/community/index",
 				// "iconPath": "static/1-01.png",
 				"text": "%tabbar.Community%"
 				// "selectedIconPath": "static/1-02.png"
