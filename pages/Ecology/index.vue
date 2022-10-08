@@ -12,7 +12,7 @@
 				{{ $t('Ecology.more') }}
 				
 				<view class="flex mb50 mt16">
-					<u--image :showMenuByLongpress='false' src='https://cdn.uviewui.com/uview/album/1.jpg' width="600rpx" height="316rpx" radius='10rpx' />
+					<u--image :showMenuByLongpress='false' :src="background" width="600rpx" height="316rpx" radius='10rpx' />
 				</view>
 				
 				<view class="understand">{{ $t('Ecology.understand') }}</view>
@@ -22,9 +22,11 @@
 </template>
 
 <script>
+	import background from '@/static/image/Ecology-back.png'
 	export default {
 		data() {
 			return {
+				background,
 			}
 		},
 		onLoad() {

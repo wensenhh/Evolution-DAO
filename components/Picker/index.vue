@@ -52,7 +52,7 @@
 			},
 			defaultIndex: {
 				type: Array,
-				default: []
+				default: () => ([])
 			},
 			
 			showTop: {

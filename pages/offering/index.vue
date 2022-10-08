@@ -4,7 +4,7 @@
 			<myHeader :flag='2' />
 			
 			<view class="banner">
-				<u--image src='https://cdn.uviewui.com/uview/album/1.jpg' width='100%' height="380rpx" radius='10rpx'></u--image>
+				<u--image :src="require('@/static/image/offering-back.png')" width='100%' height="380rpx" radius='10rpx'></u--image>
 			</view>
 			
 			<u-subsection :list="this.$t('Airdrop.offering.subList').split(',')" :current="current" @change='handleSubChange'

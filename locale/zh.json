@@ -85,6 +85,19 @@
 	"Mine.number": "质押数量",
 	"Mine.yes": "我投了赞成票",
 	"Mine.director": "我是理事",
+	"Mine.edt.info": "项目详情",
+	"Mine.edt.balance": "资产余额",
+	"Mine.edt.Recharge": "充值",
+	"Mine.edt.Extract": "提取",
+	"Mine.edt.All": "全部",
+	"Mine.edt.in": "转入",
+	"Mine.edt.out": "转出",
+	"Mine.edt.Recharge.curAddress": "当前地址",
+	"Mine.edt.Recharge.number": "充值数量",
+	"Mine.edt.Recharge.number2": "提取数量",
+	"Mine.edt.Recharge.Formalities": "手续",
+	"Mine.edt.Recharge.SelectCoin": "选择货币",
+	"Mine.edt.Recharge.Allowance": "授权",
 	
 	
 	

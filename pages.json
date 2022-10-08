@@ -67,6 +67,41 @@
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "发布提案"
 			}
+		},
+		{
+			"path": "pages/edt/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "edt"
+			}
+		},
+		{
+			"path": "pages/ed/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "ed"
+			}
+		},
+		{
+			"path": "pages/ednft/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "ednft"
+			}
+		},
+		{
+			"path": "pages/Recharge/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Recharge"
+			}
+		},
+		{
+			"path": "pages/Extract/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "Extract"
+			}
 		}
 	],
 	/*
@@ -108,33 +143,33 @@
 		"list": [
 			{
 				"pagePath": "pages/index/index",
-				// "iconPath": "static/1-01.png",
-				"text": "%tabbar.Election%"
-				// "selectedIconPath": "static/1-02.png"
+				"iconPath": "../../static/image/Election.png",
+				"text": "%tabbar.Election%",
+				"selectedIconPath": "../../static/image/Election2.png"
 			},
 			{
 				"pagePath": "pages/Ecology/index",
-				// "iconPath": "static/1-01.png",
-				"text": "%tabbar.Ecology%"
-				// "selectedIconPath": "static/1-02.png"
+				"iconPath": "../../static/image/Ecology.png",
+				"text": "%tabbar.Ecology%",
+				"selectedIconPath": "../../static/image/Ecology2.png"
 			},
 			{
 				"pagePath": "pages/airdrop/index",
-				// "iconPath": "static/1-01.png",
-				"text": "%tabbar.Airdrop%"
-				// "selectedIconPath": "static/1-02.png"
+				"iconPath": "../../static/image/Airdrop.png",
+				"text": "%tabbar.Airdrop%",
+				"selectedIconPath": "../../static/image/Airdrop2.png"
 			},
 			{
 				"pagePath": "pages/community/index",
-				// "iconPath": "static/1-01.png",
-				"text": "%tabbar.Community%"
-				// "selectedIconPath": "static/1-02.png"
+				"iconPath": "../../static/image/Community.png",
+				"text": "%tabbar.Community%",
+				"selectedIconPath": "../../static/image/Community2.png"
 			},
 			{
 				"pagePath": "pages/home/index",
-				// "iconPath": "static/2-01.png",
-				"text": "%tabbar.Mine%"
-				// "selectedIconPath": "static/2-02.png"
+				"iconPath": "../../static/image/Mine.png",
+				"text": "%tabbar.Mine%",
+				"selectedIconPath": "../../static/image/Mine2.png"
 			}
 		]
 	}

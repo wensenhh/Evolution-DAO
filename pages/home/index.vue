@@ -6,14 +6,14 @@
 			<view class="ed-main mt20 text-c">
 				<view class="fons-24 mb8">{{ $t('Mine.total') }}</view>
 				<view class="mb16 flex">
-					<u--image src="https://cdn.uviewui.com/uview/album/1.jpg" width="220rpx" height="120rpx"></u--image>
+					<u--image :src="require('@/static/image/mine-logo.png')" width="220rpx" height="120rpx"></u--image>
 				</view>
 				
 				<view class="main-num fonw-bold">0</view>
 				<view class="ml8 mr8">
 					<u-button type="primary" :text="$t('Mine.seeBtn')" color='#478CF4' :customStyle="{
 						borderRadius:'16rpx',margin:'48rpx 0 40rpx',height:'92rpx'
-					}" @click="$jump('/pages/become/index')"></u-button>
+					}"></u-button>
 				</view>
 				<view class="flex-between">
 					<view class="">{{ $t('Mine.number') }}</view>
@@ -22,7 +22,8 @@
 			</view>
 			
 			<view class="lists flex-between mt20">
-				<view class="list" v-for="(item,index) in lists" :key="item.id">
+				<view :class="['list', (index+1)%2==0?'mr5 ml5':'']" v-for="(item,index) in lists" :key="item.id" @click="$jump(`/pages/${item.path}/index`)"
+					:style="'background:url(/static/image/' + item.path + '.png) no-repeat;background-size: cover;'">
 					<view class="flex-between">
 						<view>{{ item.title }}</view>
 						<view>+</view>
@@ -48,9 +49,9 @@
 		data() {
 			return {
 				lists: [
-					{ id: 1, title: 'EDT', data: '0.0000' },
-					{ id: 2, title: 'ED', data: '0.0000' },
-					{ id: 3, title: 'EDNFT', data: '0.0000' },
+					{ id: 1, title: 'EDT', data: '0.0000', path: 'edt' },
+					{ id: 2, title: 'ED', data: '0.0000', path: 'ed' },
+					{ id: 3, title: 'EDNFT', data: '0.0000', path: 'ednft' },
 				],
 				tabs: [
 					{ id: 1, title: 'Mine.yes', data: '0.0000' },
@@ -97,7 +98,7 @@
 				width: 244rpx;
 				height: 182rpx;
 				border-radius: 20rpx;
-				background: url('https://cdn.uviewui.com/uview/album/1.jpg') center no-repeat;
+				// background: url('https://cdn.uviewui.com/uview/album/1.jpg') center no-repeat;
 				padding: 12rpx 30rpx 0;
 			}
 		}

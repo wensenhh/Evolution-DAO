@@ -13,7 +13,7 @@
 					</view>
 				</view>
 				
-				<view class="posi-a lps" @click="$jump('/pages/offering/index')">
+				<view class="posi-a lps" @tap.stop="$jump('/pages/offering/index')">
 					{{ $t('Airdrop.lps') }}
 				</view>
 			</view>
@@ -106,7 +106,8 @@
 		.card {
 			padding: 84rpx 32rpx 30rpx 48rpx;
 			margin-top: 40rpx;
-			background: url('https://cdn.uviewui.com/uview/album/1.jpg') center no-repeat;
+			background: url('@/static/image/Airdrop-back.png') no-repeat;
+			background-size: cover;
 			border-radius: 30rpx;
 			.money {
 				margin-top: 50rpx;

@@ -50,6 +50,7 @@
 		.ed-main {
 			// height: 672rpx;
 			background: linear-gradient(136deg, #70A9FF 0%, #0057B3 53%, #063087 100%);
+			// background: url('@/static/image/Election-back.png') no-repeat;
 			border: 3rpx solid #2875E4;
 			border-radius: 20rpx 20rpx 0 0;
 			padding: 20rpx 36rpx 50rpx;

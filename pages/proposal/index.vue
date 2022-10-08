@@ -25,7 +25,7 @@
 				
 				<view class="bottom flex-between">
 					<view class="flex-a">
-						<u--image src="https://cdn.uviewui.com/uview/album/1.jpg" width="40rpx" height="40rpx"></u--image>
+						<u--image :src="require('@/static/image/topic.png')" width="40rpx" height="40rpx"></u--image>
 						<text class="ml8">{{ $t('Community.prop.topic') }}</text>
 					</view>
 					<view class="tips">{{ $t('Community.prop.like') }}</view>

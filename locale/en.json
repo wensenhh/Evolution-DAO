@@ -85,6 +85,19 @@
 	"Mine.number": "Pledge quantity",
 	"Mine.yes": "I voted for it",
 	"Mine.director": "I am the director",
+	"Mine.edt.info": "Ltem details",
+	"Mine.edt.balance": "Asset balance",
+	"Mine.edt.Recharge": "Recharge",
+	"Mine.edt.Extract": "Extract",
+	"Mine.edt.All": "All",
+	"Mine.edt.in": "Transfer in",
+	"Mine.edt.out": "Transfer out",
+	"Mine.edt.Recharge.curAddress": "Currency address",
+	"Mine.edt.Recharge.number": "Recharge number",
+	"Mine.edt.Recharge.number2": "Widthraw number",
+	"Mine.edt.Recharge.Formalities": "Formalities",
+	"Mine.edt.Recharge.SelectCoin": "Select coin",
+	"Mine.edt.Recharge.Allowance": "Allowance",
 	
 	
 	

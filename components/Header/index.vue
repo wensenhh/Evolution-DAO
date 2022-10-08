@@ -1,11 +1,11 @@
 <template>
 	<view class="header-con flex-between">
 		<view>
-			<u--image v-if="flag == 1" :showMenuByLongpress='false' src='https://cdn.uviewui.com/uview/album/1.jpg' width="104rpx" height="104rpx" />
+			<u--image v-if="flag == 1" :showMenuByLongpress='false' :src="require('@/static/image/logo.png')" width="104rpx" height="104rpx" />
 			<u-icon v-else name="arrow-left" color="rgba(255,255,255,0.7)" size="32" bold @click='handleBack'></u-icon>
 		</view>
 		<view class="flex-a">
-			<u--image :showMenuByLongpress='false' src='https://cdn.uviewui.com/uview/album/1.jpg' width="44rpx" height="44rpx" />
+			<u--image :showMenuByLongpress='false' :src="require('@/static/image/back.png')" width="44rpx" height="44rpx" />
 			<view class="ml12 mr12">0x...5004</view>
 			<view class="language flex">{{ $t('local') }}</view>
 		</view>
