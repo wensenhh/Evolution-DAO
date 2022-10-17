@@ -42,13 +42,13 @@
 				 </block>
 				 <block v-if="nowlevel == 1">
 				 	下一阶段为公会联盟 <br/>
-				 	条件1: 团队大区：0 / 350 <br/>
-					条件2: 有效团队地址 0/1000 <br/>
+				 	条件1: 团队大区：{{updatedata.daqu1}} / 350 <br/>
+					条件2: 有效团队地址 {{updatedata.zhitui}}/1000 <br/>
 					注释：条件1至少伞下2条线分别大于或者等于350个有效地址。条件2整个团队地址大于或者等于1000有效地址。
 				 </block>
 				 <block v-if="nowlevel == 2">
 				 		下一阶段为理事会成员 <br/>
-				 		3个直系公会联盟已经完成数量 0/3
+				 		3个直系公会联盟已经完成数量 {{updatedata.lianmengNums}}/3
 				 </block>
 				 <!-- {{levelList[0][nowleveli].condition}} -->
 			</view>
@@ -105,7 +105,8 @@
     `
                     },]
                 ],
-				refnums: 0
+				refnums: 0,
+				updatedata: {}
 			}
 		},
 		onLoad() {
@@ -184,6 +185,7 @@
 					.call()
 					.then((res) => {
 						console.log(res)
+						this.updatedata = res
 					});
 			},
 			getidojoininfo(){
