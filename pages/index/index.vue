@@ -22,7 +22,7 @@
 					<!-- <u-button type="primary" :text="$t('Election.bocomeEtc')" color='#478CF4' :customStyle="{
 						borderRadius:'16rpx',margin:'48rpx 0 44rpx',height:'72rpx'
 					}" @click="$jump('/pages/become/index')"></u-button> -->
-					<u-button type="primary" :disabled="!ifuplevel" @tap="uplevel" :text="$t('Election.bocomeEtc')" color='#478CF4' :customStyle="{
+					<u-button type="primary" :disabled="!ifuplevel" @tap="getuplevel" :text="$t('Election.bocomeEtc')" color='#478CF4' :customStyle="{
 						borderRadius:'16rpx',margin:'48rpx 0 44rpx',height:'72rpx'
 					}"></u-button>
 				</view>
@@ -201,13 +201,15 @@
 					});
 			},
 			getuplevel(){
+				if(!this.ifuplevel){
+					return this.$msg('当前不可升级～')
+				}
 				var web3 = window.web3;
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
 				MyContract.methods
 					.updateIdentity()
 					.send({
-						from: this.address,
-						value: web3.utils.toWei('0.00005')
+						from: this.address
 					})
 					.then((res) => {
 						console.log(res)
