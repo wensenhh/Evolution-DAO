@@ -99,23 +99,31 @@
 				})
 			},
 			getubalance(){
+				var that = this
+				console.log(this.address)
+				console.log(edidoaddr)
 				var web3 = window.web3
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
-				MyContract.methods.getCanReward(this.address).call((err,
-					res) => {
+				MyContract.methods
+					.getCanReward(this.address)
+					.call()
+					.then((res) => {
 						console.log(res)
-						this.edblance = Math.round(res * 1000) / 1000
-						this.getusdtnum(res)
-				})
+						let n = web3.utils.fromWei(res, "ether");
+						this.edblance= Math.round(n * 1000) / 1000;
+						that.getusdtnum(res)
+					});
+				
 			},
 			getusdtnum(num){
+				console.log(num)
 				var web3 = window.web3
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
 				MyContract.methods.getUsdtAmount(num).call((err,
 					res) => {
 						console.log(res)
 					let n = web3.utils.fromWei(res, "ether");
-					this.ustdblance = Math.round(n * 1000) / 1000
+					this.ustdblance = Math.round(n * 10000000) / 10000000
 				})
 			},
 		}

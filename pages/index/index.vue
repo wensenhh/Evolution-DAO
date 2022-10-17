@@ -111,14 +111,11 @@
 		},
 		onLoad() {
 			this.getWeb3fun()
-			var q = document.URL.split('#')[1].split('?')[1];
-			if (q != undefined) {
-				q = q.split('inviteCode=');
-				console.log(q[1])
-				uni.setStorageSync('referrer',q[1])
-				// this.parentName = q[1];
+			var referrer = this.$route.query.inviteCode
+			console.log('referrer',referrer)
+			if (referrer != undefined){
+				uni.setStorageSync('referrer',referrer)
 			}
-			console.log(this.address)
 		},
 		computed: {
 		},
@@ -180,6 +177,7 @@
 			getUpdatedata(address){
 				var web3 = window.web3;
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				console.log("getUpdatedata:",this.address)
 				MyContract.methods
 					.getUpdateData(this.address)
 					.call()

@@ -142,10 +142,11 @@
 		methods: {
 			stakinged(){
 				console.log(this.etc.money)
-				if(this.etc.money < 100){
+				console.log(this.okdepositnum)
+				if(Number(this.etc.money) < 100){
 					return this.$msg('质押数量必须大于100')
 				}
-				if(this.etc.money > this.okdepositnum){
+				if( Number(this.etc.money )> Number(this.okdepositnum)){
 					return this.$msg('不能高于可质押数量，当前可质押数量为：' + this.okdepositnum)
 				}
 				var web3 = window.web3;
@@ -240,7 +241,7 @@
 					.call()
 					.then((res) => {
 						console.log(res)
-						this.depositnum = res
+						this.depositnum = web3.utils.fromWei(res, "ether");
 						// this.nowlevel = res.identity
 					});
 			},

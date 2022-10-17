@@ -21,7 +21,7 @@
 			<view class="mt20">
 				<view class="fons-16 mb5 flex-between">
 					<text>{{ $t('Airdrop.address') }}</text>
-					<text class="fons-14">BNB: 0</text>
+					<text class="fons-14"></text>
 				</view>
 				<u--input placeholder="300000000" disabled border="none" color='#fff' v-model="etc.money" :customStyle="inputStyle" 
 				 placeholderStyle="color:#fff"/>
@@ -30,10 +30,10 @@
 				<view class="fons-16 mb5">
 					{{ $t('Airdrop.invitationAddress') }}
 				</view>
-				<u--input :placeholder="$t('Airdrop.invitationAddressP')" :disabled="hasreferrer"  border="none" color='#fff' v-model="etc.referrer" :customStyle="inputStyle"
+				<u--input  :placeholder="$t('Airdrop.invitationAddressP')" :disabled="hasreferrer"  border="none" color='#fff' v-model="etc.referrer" :customStyle="inputStyle"
 				 placeholderStyle="color:#fff">
 					<template slot="suffix">
-						<u-icon name="eye" color='#ECF2FA' size='36'></u-icon>
+						<!-- <u-icon name="eye" color='#ECF2FA' size='36'></u-icon> -->
 					</template>
 				</u--input>
 			</view>
@@ -56,9 +56,9 @@
 				</view>
 				<view class="flex-between mt30 mb16 ml8 mr8 fons-10">
 					<view class="link text-hidden3">
-						{{'http://test.edblock.xyz/#/?inviteCode=' + address}}
+						{{'http://test.edblock.xyz/?inviteCode=' + address}}
 					</view>
-					<view class="flex-a" @tap="copyfun('http://test.edblock.xyz/#/?inviteCode=' + address)">
+					<view class="flex-a" @tap="copyfun('http://test.edblock.xyz/?inviteCode=' + address)">
 						{{ $t('Airdrop.copy') }}
 						<u-icon name="bookmark" color="#fff" size="32"></u-icon>
 					</view>
@@ -96,7 +96,6 @@
 					{ id: 1, title: 'Airdrop.vip', data: 82 },
 					{ id: 2, title: 'Airdrop.account', data: 0 },
 					{ id: 3, title: 'Airdrop.pool', data: 0 },
-					{ id: 4, title: 'Airdrop.lp', data: 0 },
 				],
 				inputStyle: {
 					height:'112rpx',
@@ -108,6 +107,7 @@
 					referrer: '',
 					refnums: 0,
 					allamount: 0,
+					gdeposit: 0,
 				},
 				address: uni.getStorageSync('wallet_address'),
 				hasreferrer: true,
@@ -116,6 +116,7 @@
 			}
 		},
 		onLoad() {
+
 		},
 		onShow() {
 			let that = this
@@ -258,9 +259,12 @@
 					.call()
 					.then((res) => {
 						console.log(res)
-						this.etc.allamount = res
+						this.etc.allamount = web3.utils.fromWei(res, "ether")
 						// this.nowlevel = res.identity
 					});
+					
+				
+					
 			},
 			gtakedAmount(){
 				var web3 = window.web3;
@@ -270,7 +274,16 @@
 					.call()
 					.then((res) => {
 						console.log(res)
-						this.tubeList[1].data = res
+						this.tubeList[1].data = web3.utils.fromWei(res, "ether")
+						// this.nowlevel = res.identity
+					});
+					
+				MyContract.methods
+					.gdeposit()
+					.call()
+					.then((res) => {
+						console.log(res)
+						this.tubeList[2].data  = web3.utils.fromWei(res, "ether")
 						// this.nowlevel = res.identity
 					});
 			},
@@ -278,7 +291,7 @@
 				var web3 = window.web3;
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
 				MyContract.methods
-					.countUsersOfReferrer(this.etc.referrer)
+					.countUsersOfReferrer(this.address)
 					.call()
 					.then((res) => {
 						console.log('直推人数=' + res)
@@ -364,4 +377,5 @@
 			}
 		}
 	}
+	
 </style>
