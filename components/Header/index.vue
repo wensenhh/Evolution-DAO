@@ -6,13 +6,15 @@
 		</view>
 		<view class="flex-a">
 			<u--image :showMenuByLongpress='false' :src="require('@/static/image/back.png')" width="44rpx" height="44rpx" />
-			<view class="ml12 mr12">0x...5004</view>
-			<view class="language flex">{{ $t('local') }}</view>
+			<view class="ml12 mr12">{{address | hideaddress(address)}}</view>
+			<view class="language flex" @click="handleSwitch">{{ $t('local') }}</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import { getStorage, setStorage } from '@/utils/cache'
+	import { ANGELLONE_LOCAL } from '@/config/config'
 	export default {
 		props: {
 			flag: {
@@ -22,13 +24,44 @@
 		},
 		data() {
 			return {
-				
+				curLocal: getStorage(ANGELLONE_LOCAL),
+				address: ''
 			}
 		},
+		mounted() {
+			this.getAddress();
+		},
 		methods: {
+			getAddress(){
+				if (window.ethereum) {
+				    window.ethereum.enable().then((res) => {
+						console.log("当前钱包地址:" + res[0]);
+						this.address = res[0];
+						uni.setStorageSync('wallet_address', res[0]);
+					});
+				} else {
+				    console.log("请安装MetaMask钱包");
+				}
+			},
 			// 返回上一层
 			handleBack() {
 				uni.navigateBack()
+			},
+			
+			handleSwitch() {
+				uni.showModal({
+					content: `是否确认切换为 ${this.curLocal == 'zh' ? 'English' : '简体中文'}`,
+					confirmText: this.curLocal == 'zh' ? '确定' : 'confirm',
+					cancelText: this.curLocal == 'zh' ? '取消' : 'cancel',
+					success: ({ confirm }) => {
+						if(!confirm) return
+						this.$store.dispatch('setLocal', this.curLocal == 'zh' ? 'en' : 'zh')
+						this.$msg('切换成功', 1)
+						location.reload()
+					}
+				})
+				
+				
 			},
 		}
 	}

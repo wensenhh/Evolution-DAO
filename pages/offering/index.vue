@@ -7,10 +7,10 @@
 				<u--image :src="require('@/static/image/offering-back.png')" width='100%' height="380rpx" radius='10rpx'></u--image>
 			</view>
 			
-			<u-subsection :list="this.$t('Airdrop.offering.subList').split(',')" :current="current" @change='handleSubChange'
+			<u-subsection :list="[this.$t('Airdrop.offering.subList')]" :current="current" @change='handleSubChange'
 			  activeColor='#FFFFFF' inactiveColor='rgba(255,255,255,0.6)' mode='subsection' :bold='false'></u-subsection>
 			
-			<view v-show="current == 0">
+			<!-- <view v-show="current == 0">
 				<view class="offering-num posi-r">
 					<view class="num-top flex flex-c">
 						<view class="c-478CF4 mb8">
@@ -49,16 +49,16 @@
 				<u-button type="primary" :text="$t('Airdrop.offering.rushBtn')" color='#478CF4' :customStyle="{
 					margin:'48rpx 0',height:'84rpx',borderRadius:'10rpx'
 				}"></u-button>
-			</view>
+			</view> -->
 			
-			<view v-show="current == 1">
+			<view v-show="current == 0">
 				<view class="offering-num posi-r lps">
 					<view>
 						<view class="fons-16 mb5 flex-between">
 							<text>{{ $t('Airdrop.offering.lpsAddress') }}</text>
-							<text class="fons-14">LPS:0</text>
+							<text class="fons-14">{{$t('Mine.edt.Recharge.mydeposit')}}: {{depositmapnum}}</text>
 						</view>
-						<u--input placeholder="0x29FBb033E84601c35djsHBu821145shda578487HX53" border="none" color='#fff' v-model="etc.money"
+						<u--input placeholder="" border="none" :disabled="true" color='#fff' v-model="depositnum"
 						 :customStyle="inputStype2"
 						 />
 					</view>
@@ -71,12 +71,15 @@
 						 :customStyle="inputStype2"
 						 />
 					</view>
-					<u-button type="primary" :text="$t('Airdrop.offering.AllowanceBtn')" color='#478CF4' :customStyle="{
+					<u-button type="primary" v-if="!approveFlag" @tap="ApproveEd" :text="$t('Airdrop.offering.AllowanceBtn')" color='#478CF4' :customStyle="{
 						margin:'52rpx 0 0',height:'84rpx',borderRadius:'10rpx'
 					}"></u-button>
+					<u-button type="primary" v-else @tap="stakinged" :text="$t('Airdrop.offering.pledge')" color='#478CF4' :customStyle="{
+											margin:'52rpx 0 0',height:'84rpx',borderRadius:'10rpx'
+										}"></u-button>
 				</view>
 				
-				<u-empty mode="data" icon="http://cdn.uviewui.com/uview/empty/data.png" :text="$t('system.notData')" />
+				<!-- <u-empty mode="data" icon="http://cdn.uviewui.com/uview/empty/data.png" :text="$t('system.notData')" /> -->
 			</view>
 			
 		</view>
@@ -84,6 +87,18 @@
 </template>
 
 <script>
+	const Web3 = require("../../common/getWeb3");
+	import {
+		usdtaddr,
+		edaddr,
+		edidoaddr,
+		edabi,
+		edidoabi
+	} from "@/common/abi/ed";
+	import {
+		abi
+	} from "@/common/abi/bdd";
+	import web3utils from '@/common/web3Utils.js'
 	export default {
 		data() {
 			return {
@@ -101,15 +116,151 @@
 					padding:'0 36rpx',
 					borderBottom: '2rpx solid #1364BF'
 				},
-				etc: {},
+				etc: {
+					money: 15000000
+				},
+				depositnum: 0,
+				depositmapnum: 0,
+				address: uni.getStorageSync('wallet_address'),
+				approveFlag: false,
+				edblance: 0,
+				okdepositnum:0
 			}
 		},
 		onLoad() {
 			// this.$store.dispatch('setLocal', 'en')
+			if(window.web3.utils){
+				this.allowance()
+				this.getbalance()
+				this.getdeposit()
+				this.getidojoininfo()
+				this.getdepositmap()
+			}
 		},
 		computed: {
 		},
 		methods: {
+			stakinged(){
+				console.log(this.etc.money)
+				if(this.etc.money < 100){
+					return this.$msg('质押数量必须大于100')
+				}
+				if(this.etc.money > this.okdepositnum){
+					return this.$msg('不能高于可质押数量，当前可质押数量为：' + this.okdepositnum)
+				}
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				var num = web3.utils.toWei((this.etc.money).toString());
+				uni.showLoading({
+					title: '正在质押中～',
+					mask: true
+				});
+				console.log(num)
+				try{
+					MyContract.methods.deposit(num).send({
+							from: this.address
+						}).then(res => {
+							uni.hideLoading();
+							uni.showToast({
+								title: '质押成功'
+							})
+							this.etc.money = ''
+							this.getbalance()
+							this.getdeposit()
+							this.getdepositmap()
+							this.getidojoininfo()
+						}).catch((e) =>{
+							console.log(e)
+							uni.hideLoading();
+						})
+				}catch(e){
+					//TODO handle the exception
+					console.log(e)
+				}
+				
+			},
+			// 授权ed
+			async ApproveEd() {
+				let that = this;
+				var web3 = window.web3
+				let data = new Object();
+				data['from'] = web3utils.createContract(edabi, edaddr, that.address);
+				data['to'] = web3utils.createContract(edidoabi, edidoaddr, that.address);
+				data['account'] = that.address;
+				web3utils.approve(data, function() {
+					that.approveFlag = true;
+					that.allowance()
+					that.$msg('Authorize succeeded',true)
+				})
+			},
+			getbalance(){
+				var web3 = window.web3
+				var MyContract = new web3.eth.Contract(abi, usdtaddr);
+				MyContract.methods.balanceOf(this.address).call((err,
+					res) => {
+						console.log(res)
+					let n = web3.utils.fromWei(res, "ether");
+					this.edblance = Math.round(n * 1000) / 1000
+				})
+			},
+			getidojoininfo(){
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				MyContract.methods
+					.getMaxDeposit(this.address)
+					.call()
+					.then((res) => {
+						console.log(res)
+						let n = web3.utils.fromWei(res, "ether");
+						this.okdepositnum = n
+						this.etc.money = n
+					});
+			},
+			async allowance() {
+				// 查询授权额度
+				try {
+					var web3 = window.web3
+					var MyContract = new web3.eth.Contract(edabi, edaddr)
+					MyContract.methods.allowance(this.address, edidoaddr).call().then(
+						res => {
+						let n = web3.utils.fromWei(res, "ether");
+						 console.log("授权数量==",n);
+						 this.approveFlag = n >= 100000000;
+					})
+				} catch (error) {
+					// this.allowanceBalance = 0;
+					console.error("trigger smart contract error", error)
+				}
+			},
+			getdeposit(){
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				MyContract.methods
+					.gdeposit()
+					.call()
+					.then((res) => {
+						console.log(res)
+						this.depositnum = res
+						// this.nowlevel = res.identity
+					});
+			},
+			getdepositmap(){
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				MyContract.methods
+					.depositMap(this.address)
+					.call()
+					.then((res) => {
+						console.log(res)
+						let n = web3.utils.fromWei(res, "ether");
+						this.depositmapnum = Math.round(n * 1000) / 1000
+						// this.nowlevel = res.identity
+					});
+			},
+			//减法
+			    subtract(a,b){
+			        return this.$math.subtract(this.$math.bignumber(a), this.$math.bignumber(b));
+			    },
 			// 切换分断器
 			handleSubChange(ind) {
 				this.current = ind

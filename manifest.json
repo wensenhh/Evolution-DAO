@@ -1,6 +1,6 @@
 {
     "name" : "app",
-    "appid" : "__UNI__80480A9",
+    "appid" : "__UNI__7053C7E",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -74,6 +74,6 @@
             "mode" : "history",
             "base" : "./"
         },
-        "title" : ""
+        "title" : "ED"
     }
 }

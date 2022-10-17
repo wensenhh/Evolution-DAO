@@ -2,6 +2,8 @@ import App from './App'
 import Vue from 'vue'
 import store from './store'
 import uView from "uview-ui"
+import Web3 from 'web3'
+Vue.prototype.Web3 = Web3
 Vue.use(uView);
 uni.$u.config.unit = 'rpx'
 
@@ -19,6 +21,14 @@ Vue.config.productionTip = false
 
 App.mpType = 'app'
 
+//隐藏地址
+Vue.filter('hideaddress',(addr)=>{
+	return addr.slice(0, 6) + '***' + addr.slice(-3)
+})
+import * as math from 'mathjs'; //
+Vue.prototype.$math = math; //挂在到原型
+import tools from '@/common/tools.js'
+Vue.prototype.$tools = tools
 // 手机端的弹框提示
 Vue.prototype.$msg = function(msg, flag) {
 	// console.log(flag)

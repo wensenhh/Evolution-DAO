@@ -159,12 +159,12 @@
 				"text": "%tabbar.Airdrop%",
 				"selectedIconPath": "../../static/image/Airdrop2.png"
 			},
-			{
-				"pagePath": "pages/community/index",
-				"iconPath": "../../static/image/Community.png",
-				"text": "%tabbar.Community%",
-				"selectedIconPath": "../../static/image/Community2.png"
-			},
+			// {
+			// 	"pagePath": "pages/community/index",
+			// 	"iconPath": "../../static/image/Community.png",
+			// 	"text": "%tabbar.Community%",
+			// 	"selectedIconPath": "../../static/image/Community2.png"
+			// },
 			{
 				"pagePath": "pages/home/index",
 				"iconPath": "../../static/image/Mine.png",

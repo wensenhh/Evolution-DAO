@@ -17,12 +17,12 @@
 				</view>
 				<view class="flex-between">
 					<view class="">{{ $t('Mine.number') }}</view>
-					<view class="">{{ 0 }}</view>
+					<view class="">{{ depositmapnum }}</view>
 				</view>
 			</view>
 			
 			<view class="lists flex-between mt20">
-				<view :class="['list', (index+1)%2==0?'mr5 ml5':'']" v-for="(item,index) in lists" :key="item.id" @click="$jump(`/pages/${item.path}/index`)"
+				<view :class="['list', (index+1)%2==0?'mr5 ml5':'']" v-for="(item,index) in lists" :key="item.id" @click="gotozpage(item.path,index)"
 					:style="'background:url(/static/image/' + item.path + '.png) no-repeat;background-size: cover;'">
 					<view class="flex-between">
 						<view>{{ item.title }}</view>
@@ -45,6 +45,17 @@
 </template>
 
 <script>
+	const Web3 = require("../../common/getWeb3");
+	import {
+		usdtaddr,
+		edaddr,
+		edidoaddr,
+		edabi,
+		edidoabi
+	} from "@/common/abi/ed";
+	import {
+		abi
+	} from "@/common/abi/bdd";
 	export default {
 		data() {
 			return {
@@ -58,13 +69,35 @@
 					{ id: 2, title: 'Mine.director', data: '0.0000' },
 				],
 				curTabs: 1,
+				depositmapnum: 0,
+				address: uni.getStorageSync('wallet_address'),
 			}
 		},
 		onLoad() {
+			this.getdepositmap()
 		},
 		computed: {
 		},
 		methods: {
+			getdepositmap(){
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				MyContract.methods
+					.depositMap(this.address)
+					.call()
+					.then((res) => {
+						console.log(res)
+						let n = web3.utils.fromWei(res, "ether");
+						this.depositmapnum = Math.round(n * 1000) / 1000
+					});
+			},
+			gotozpage(path,index){
+				if(index == 1){
+					this.$jump(`/pages/${path}/index`)
+				}else{
+					return this.$msg('暂未开放～')
+				}
+			},
 		}
 	}
 </script>
