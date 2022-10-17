@@ -135,6 +135,7 @@
 					that.getifklevel()
 					// that.getReferrer()
 					that.getcountUsers()
+					that.getUpdatedata()
 				});
 			},
 			getTeaminfo(){
@@ -173,6 +174,16 @@
 					.then((res) => {
 						console.log('直推人数=' + res)
 						this.refnums = res
+					});
+			},
+			getUpdatedata(address){
+				var web3 = window.web3;
+				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
+				MyContract.methods
+					.getUpdateData(this.address)
+					.call()
+					.then((res) => {
+						console.log(res)
 					});
 			},
 			getidojoininfo(){
