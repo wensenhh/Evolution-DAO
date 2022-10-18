@@ -11,14 +11,14 @@
 					</view>
 					<!-- <view class="fons-12" style="color: rgba(255,255,255,0.6);">可提取ED:{{edblance}}</view> -->
 				</view>
-				<u--input :placeholder="address" :disabled="true" color='#fff' border="bottom"
+				<u--input :placeholder="address" :disabled="true" border="bottom"
 				  v-model="recharge.adress"></u--input>
 				  
 				<view class="flex-a pl5 pr5 mb10 mt30">
 					<view class="line-ed mr5" />
 				  	<text>{{ $t('Mine.edt.Recharge.number2') }}</text>
 				</view>
-				<u--input :placeholder="$t('Mine.edt.Recharge.number2')" :disabled="true" color='#fff' border="bottom"
+				<u--input :placeholder="$t('Mine.edt.Recharge.number2')" :disabled="true" border="bottom"
 				    v-model="edblance"></u--input>
 					
 				<!-- <view class="flex-between pl5 pr5 mt40">
@@ -85,7 +85,7 @@
 		},
 		methods: {
 			extracted(){
-				console.log(this.recharge.edtq)
+				console.log(this.edblance)
 				// if(this.recharge.edtq > this.edblance){
 				// 	return this.$msg('不能超过当前可提取数量')
 				// }
@@ -97,7 +97,7 @@
 				}
 				var web3 = window.web3;
 				var MyContract = new web3.eth.Contract(edidoabi, edidoaddr);
-				var num = web3.utils.toWei((this.etc.money).toString());
+				var num = web3.utils.toWei((this.edblance).toString());
 				uni.showLoading({
 					title: '正在提取中～',
 					mask: true
